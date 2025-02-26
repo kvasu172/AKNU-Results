@@ -1,0 +1,27 @@
+name: Run PHP Script
+
+on:
+  workflow_dispatch: # Allows manual triggering of the workflow
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.0' # Use the PHP version compatible with your script
+          tools: composer:v2
+
+      - name: Install dependencies
+        run: composer install
+
+      - name: Run PHP script
+        run: php fetch_results.php
+        env:
+          URL: ${{ secrets.RESULTS_URL }} # URL of the results page
+          CSV_FILE: hall_tickets.csv # Path to the CSV file
