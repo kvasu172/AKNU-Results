@@ -1,0 +1,7 @@
+{
+  "require": {
+    "guzzlehttp/guzzle": "^7.0",
+    "phpoffice/phpspreadsheet": "^1.21",
+    "simple-html-dom/simple-html-dom": "^1.9"
+  }
+}
